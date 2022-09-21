@@ -20,7 +20,7 @@ def virus(x,y):
     # 상, 하, 좌, 우 중에서 바이러스가 퍼질 수 있는 경우
     if  nx >= 0 and nx <n and ny >= 0 and ny < m:
       if temp[nx][ny] == 0:
-        # 해당 위이체 바이러스 배치하고, 다시 재귀적으로 수행
+        # 해당 위치 바이러스 배치하고, 다시 재귀적으로 수행
         temp[nx][ny] = 2
         virus(nx, ny)
 
@@ -48,17 +48,17 @@ def dfs(count):
       # 안전 영역의 최댓값 계산
     result = max(result, get_score())
     return
-# 빈 공간에 울타리 설치
-for i in range(n):
-  for j in range(m):
-    if data[i][j] == 0:
-      data[i][j] =1
-      count += 1
-      dfs(count)
-      data[i][j] = 0
-      count -= 1
+  # 빈 공간에 울타리 설치
+  for i in range(n):
+    for j in range(m):
+      if data[i][j] == 0:
+        data[i][j] =1
+        count += 1
+        dfs(count)
+        data[i][j] = 0
+        count -= 1
 dfs(0)
-print(reuslt)
+print(result)
 
 
 '''
